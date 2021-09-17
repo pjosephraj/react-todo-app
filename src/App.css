@@ -1,38 +1,119 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+body {
+  background-image: linear-gradient(120deg, #5f57d1, #c065c0);
   min-height: 100vh;
+  margin: 0;
+}
+
+.container {
+  width: 90%;
+  max-width: 800px;
+  margin: 60px auto 1rem;
+  background: #fff;
+  border-radius: 4px;
+  padding: 1rem;
+  box-shadow: 3px 4px 4px rgb(0 0 0 / 40%);
+  min-height: 240px;
+}
+
+.title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #6200ea;
+}
+
+.form__field {
   display: flex;
-  flex-direction: column;
+  margin: 1.5rem;
+  position: relative;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.form__field input {
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  font-size: 1.1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form__field input:focus,
+.form__field input:active {
+  border-color: #2962ff;
+}
+
+.form__field input[type="text"] {
+  flex: 1;
+  padding: 0.6rem 4.5rem .6rem .6rem;
+}
+
+.form__field input[type="button"] {
+  background: #2962ff;
+  border-color: #2962ff;
+  color: #fff;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  position: absolute;
+  right: 0.4rem;
+  padding: 0.3rem 0.6rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.form__field input[type="button"]:hover {
+  background: #0d47a1;
+  border-color: #0d47a1;
+}
+
+.list-item {
+  background: #fafafa;
+  margin-bottom: 0.5rem;
+  padding-left: 0.5rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  transition: 0.2s ease-in-out;
+  position: relative;
+}
+
+.list-item:hover {
+  background: #eceff1;
+}
+
+.list-item .item-text {
+  flex: 1;
+  margin: 0 90px 0 6px;
+}
+
+.list-item input {
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.list-item input[type="checkbox"] {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.list-item input[type="button"] {
+  border: none;
+  outline: none;
+  background: #f44336;
+  color: #fff;
+  padding: 1rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  transition: 0.2s ease-in-out;
+  position: relative;
+  transform: translateX(110%);
+}
+
+.list-item:hover input[type="button"] {
+  transform: translateX(0);
+}
+
+.list-item input[type="button"]:hover {
+  background: #b71c1c;
 }

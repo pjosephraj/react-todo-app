@@ -4,21 +4,25 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <div className="title">Todo App</div>
+      <div className="form">
+        <div className="form__field">
+          <input type="text" />
+          <input type="button" value="ADD" />
+        </div>
+      </div>
+      <div className="list">
+        <div className="list-item">
+          <div className="item-checkbox">
+            <input type="checkbox" name="" id="" />
+          </div>
+          <div className="item-text">Learning React</div>
+          <div className="item-delete">
+            <input type="button" value="Delete" />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
