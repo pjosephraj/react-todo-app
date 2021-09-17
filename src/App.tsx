@@ -1,30 +1,46 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import TodoForm from './components/TodoForm';
+import TodoList from './components/TodoList';
 
-function App() {
-  return (
-    <div className="container">
-      <div className="title">Todo App</div>
-      <div className="form">
-        <div className="form__field">
-          <input type="text" />
-          <input type="button" value="ADD" />
-        </div>
+interface ItodoItem {
+  id: number,
+  text: string,
+}
+
+interface Props {}
+
+interface State {
+  todos: ItodoItem[]
+}
+class App extends React.Component<Props, State> {
+
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      todos: []
+    };
+  }
+
+  addTodo = (todoItm: ItodoItem) => {
+    this.setState({ todos: this.state.todos.concat(todoItm) });
+  };
+
+  removeTodo = (id: number) => {
+    const { todos } = this.state;
+    const filteredTodos = todos.filter((itm: ItodoItem) => itm.id !== id);
+    this.setState({ todos: filteredTodos });
+  };
+
+  render() {
+    return (
+      <div className="container">
+        <div className="title">React Todo App</div>
+        <TodoForm addTodo={this.addTodo}></TodoForm>
+        <TodoList todos={this.state.todos} removeTodo={this.removeTodo}></TodoList>
       </div>
-      <div className="list">
-        <div className="list-item">
-          <div className="item-checkbox">
-            <input type="checkbox" name="" id="" />
-          </div>
-          <div className="item-text">Learning React</div>
-          <div className="item-delete">
-            <input type="button" value="Delete" />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;

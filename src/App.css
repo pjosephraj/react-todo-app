@@ -39,7 +39,7 @@ body {
 
 .form__field input:focus,
 .form__field input:active {
-  border-color: #2962ff;
+  border-color: #6200ea;
 }
 
 .form__field input[type="text"] {
@@ -47,9 +47,13 @@ body {
   padding: 0.6rem 4.5rem .6rem .6rem;
 }
 
+.form__field input[type="text"]::placeholder {
+  color: #aaa;
+}
+
 .form__field input[type="button"] {
-  background: #2962ff;
-  border-color: #2962ff;
+  background: #6200ea;
+  border-color: #6200ea;
   color: #fff;
   margin-left: 0.5rem;
   cursor: pointer;
@@ -66,8 +70,13 @@ body {
   border-color: #0d47a1;
 }
 
+.form__field input[type="button"]:disabled {
+  opacity: .1;
+  pointer-events: none;
+}
+
 .list-item {
-  background: #fafafa;
+  background: #eceff1;
   margin-bottom: 0.5rem;
   padding-left: 0.5rem;
   border-radius: 4px;
@@ -79,12 +88,16 @@ body {
 }
 
 .list-item:hover {
-  background: #eceff1;
+  background: #EDE7F6;
 }
 
 .list-item .item-text {
   flex: 1;
   margin: 0 90px 0 6px;
+}
+
+.list-item .item-text--done {
+  text-decoration: line-through;
 }
 
 .list-item input {
