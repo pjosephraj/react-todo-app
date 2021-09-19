@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 interface ItodoItem {
   id: number;
@@ -25,7 +25,6 @@ const TodoItem = (props: Props) => {
         <input
           type="checkbox"
           name={todo.id.toString()}
-          id=""
           onChange={() => setIsDone(!isDone)}
         />
       </div>

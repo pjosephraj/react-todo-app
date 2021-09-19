@@ -1,45 +1,43 @@
-import React from 'react';
+import { useState } from "react";
 
 interface Props {
   addTodo: any;
 }
 
-interface State {
-  text: string;
-}
+const TodoForm = (props: Props) => {
+  const { addTodo } = props;
+  const [text, setText] = useState<string>("");
 
-class TodoForm extends React.Component<Props, State>{
-
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      text: ''
-    }
-  }
-
-  addTodo = (e: any) => {
+  const updateTodo = (e: any) => {
     e.preventDefault();
-    if(this.state.text) {
+    if (text) {
       const todo = {
         id: Date.now(),
-        text: this.state.text,
-      }
-      this.props.addTodo(todo);
-      this.setState({text: ''});
+        text
+      };
+      addTodo(todo);
+      setText("");
     }
-  }
+  };
 
-  render() {
-    return (
-      <div className="form">
-        <form className="form__field" onSubmit={this.addTodo}>
-          <input type="text" placeholder="Enter Todo Item and click on Add Or Press Enter" value={this.state.text} onChange={(e) => this.setState({ text: e.target.value })} />
-          <input type="button" value="ADD" disabled={!this.state.text} onClick={this.addTodo} />
-        </form>
-      </div>
-    );
-  }
-
-}
+  return (
+    <div className="form">
+      <form className="form__field" onSubmit={updateTodo}>
+        <input
+          type="text"
+          placeholder="Enter Todo Item and click on Add Or Press Enter"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+        />
+        <input
+          type="button"
+          value="ADD"
+          disabled={!text}
+          onClick={updateTodo}
+        />
+      </form>
+    </div>
+  );
+};
 
 export default TodoForm;

@@ -11,14 +11,9 @@ interface ItodoItem {
 const APP = () => {
   const [todos, setTodos] = useState<ItodoItem[]>([]);
 
-  const addTodo = (todoItm: ItodoItem) => {
-    setTodos((prev: ItodoItem[]) => prev.concat(todoItm));
-  };
-
   useEffect(() => {
     const lsTodos = localStorage.getItem("todos");
     if (lsTodos) {
-      console.log(lsTodos);
       setTodos(JSON.parse(lsTodos));
     }
   }, []);
@@ -27,11 +22,13 @@ const APP = () => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
-  const removeTodo = (id: number) => {
+  const addTodo = (todoItm: ItodoItem) =>
+    setTodos((prev: ItodoItem[]) => prev.concat(todoItm));
+
+  const removeTodo = (id: number) =>
     setTodos((prev: ItodoItem[]) =>
       prev.filter((itm: ItodoItem) => itm.id !== id)
     );
-  };
 
   return (
     <div className="container">
