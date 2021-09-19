@@ -1,42 +1,42 @@
-import React from 'react';
+import React, { useState } from "react";
 
 interface ItodoItem {
-  id: number,
-  text: string,
+  id: number;
+  text: string;
 }
 
 interface Props {
-  todo: ItodoItem,
-  removeTodo: any
+  todo: ItodoItem;
+  removeTodo: any;
 }
 
-interface State {
-  isDone: boolean
-}
+const TodoItem = (props: Props) => {
+  const { todo } = props;
+  const [isDone, setIsDone] = useState(false);
 
-class TodoItem extends React.Component<Props, State> {
+  const removeTodo = () => {
+    const { id } = todo;
+    props.removeTodo(id);
+  };
 
-  state = { isDone: false };
-
-  removeTodo = () => {
-    const id = this.props.todo.id;
-    this.props.removeTodo(id);
-  }
-
-  render() {
-    const { todo } = this.props;
-    return (
-      <div className="list-item">
-        <div className="item-checkbox">
-          <input type="checkbox" name={todo.id.toString()} id="" onChange={() => this.setState({isDone: !this.state.isDone})} />
-        </div>
-        <div className={`item-text ${this.state.isDone ? 'item-text--done' : ''}`}>{todo.text}</div>
-        <div className="item-delete">
-          <input type="button" value="Delete" onClick={this.removeTodo} />
-        </div>
+  return (
+    <div className="list-item">
+      <div className="item-checkbox">
+        <input
+          type="checkbox"
+          name={todo.id.toString()}
+          id=""
+          onChange={() => setIsDone(!isDone)}
+        />
       </div>
-    );
-  }
-}
+      <div className={`item-text ${isDone ? "item-text--done" : ""}`}>
+        {todo.text}
+      </div>
+      <div className="item-delete">
+        <input type="button" value="Delete" onClick={removeTodo} />
+      </div>
+    </div>
+  );
+};
 
 export default TodoItem;

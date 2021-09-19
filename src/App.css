@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-image: linear-gradient(120deg, #5f57d1, #c065c0);
   min-height: 100vh;
@@ -5,7 +9,7 @@ body {
 }
 
 .container {
-  width: 90%;
+  width: 90vw;
   max-width: 800px;
   margin: 60px auto 1rem;
   background: #fff;
@@ -44,8 +48,8 @@ body {
 
 .form__field input[type="text"] {
   flex: 1;
-  padding: 0.6rem 4.5rem .6rem .6rem;
-  width: 100%;
+  padding: 0.6rem 4.5rem 0.6rem 0.6rem;
+  max-width: 100%;
 }
 
 .form__field input[type="text"]::placeholder {
@@ -72,7 +76,7 @@ body {
 }
 
 .form__field input[type="button"]:disabled {
-  opacity: .1;
+  opacity: 0.1;
   pointer-events: none;
 }
 
@@ -89,7 +93,7 @@ body {
 }
 
 .list-item:hover {
-  background: #EDE7F6;
+  background: #ede7f6;
 }
 
 .list-item .item-text {
