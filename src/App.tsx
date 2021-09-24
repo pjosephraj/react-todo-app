@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
@@ -6,6 +6,7 @@ import TodoList from "./components/TodoList";
 interface ItodoItem {
   id: number;
   text: string;
+  isDone?: boolean;
 }
 
 const APP = () => {
@@ -30,11 +31,26 @@ const APP = () => {
       prev.filter((itm: ItodoItem) => itm.id !== id)
     );
 
+  const updateTodo = (todo: ItodoItem) => {
+    setTodos((prev: ItodoItem[]) => {
+      return prev.map((itm: ItodoItem) => {
+        if (itm.id === todo.id) {
+          itm.isDone = todo.isDone;
+        }
+        return itm;
+      });
+    });
+  };
+
   return (
     <div className="container">
       <div className="title">React Todo App</div>
       <TodoForm addTodo={addTodo}></TodoForm>
-      <TodoList todos={todos} removeTodo={removeTodo}></TodoList>
+      <TodoList
+        todos={todos}
+        removeTodo={removeTodo}
+        updateTodo={updateTodo}
+      ></TodoList>
     </div>
   );
 };

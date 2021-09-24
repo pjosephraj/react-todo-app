@@ -1,22 +1,26 @@
-import { useState } from "react";
-
 interface ItodoItem {
   id: number;
   text: string;
+  isDone?: boolean;
 }
 
 interface Props {
   todo: ItodoItem;
   removeTodo: any;
+  updateTodo: any;
 }
 
 const TodoItem = (props: Props) => {
   const { todo } = props;
-  const [isDone, setIsDone] = useState(false);
 
   const removeTodo = () => {
     const { id } = todo;
     props.removeTodo(id);
+  };
+
+  const updateTodo = () => {
+    todo.isDone = !todo.isDone;
+    props.updateTodo(todo);
   };
 
   return (
@@ -25,10 +29,11 @@ const TodoItem = (props: Props) => {
         <input
           type="checkbox"
           name={todo.id.toString()}
-          onChange={() => setIsDone(!isDone)}
+          onChange={updateTodo}
+          checked={todo.isDone}
         />
       </div>
-      <div className={`item-text ${isDone ? "item-text--done" : ""}`}>
+      <div className={`item-text ${todo.isDone ? "item-text--done" : ""}`}>
         {todo.text}
       </div>
       <div className="item-delete">

@@ -1,18 +1,19 @@
-import React from "react";
 import TodoItem from "./TodoItem";
 
 interface ItodoItem {
   id: number;
   text: string;
+  isDone?: boolean;
 }
 
 interface Props {
   todos: ItodoItem[];
   removeTodo: any;
+  updateTodo: any;
 }
 
 const TodoList = (props: Props) => {
-  const { todos, removeTodo } = props;
+  const { todos, removeTodo, updateTodo } = props;
   return (
     <div className="list">
       {todos.map((todo) => {
@@ -21,6 +22,7 @@ const TodoList = (props: Props) => {
             todo={todo}
             key={todo.id}
             removeTodo={removeTodo}
+            updateTodo={updateTodo}
           ></TodoItem>
         );
       })}

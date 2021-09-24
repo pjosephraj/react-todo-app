@@ -8,12 +8,13 @@ const TodoForm = (props: Props) => {
   const { addTodo } = props;
   const [text, setText] = useState<string>("");
 
-  const updateTodo = (e: any) => {
+  const updateTodoList = (e: any) => {
     e.preventDefault();
     if (text) {
       const todo = {
         id: Date.now(),
-        text
+        text,
+        isDone: false
       };
       addTodo(todo);
       setText("");
@@ -22,7 +23,7 @@ const TodoForm = (props: Props) => {
 
   return (
     <div className="form">
-      <form className="form__field" onSubmit={updateTodo}>
+      <form className="form__field" onSubmit={updateTodoList}>
         <input
           type="text"
           placeholder="Enter Todo Item and click on Add Or Press Enter"
@@ -33,7 +34,7 @@ const TodoForm = (props: Props) => {
           type="button"
           value="ADD"
           disabled={!text}
-          onClick={updateTodo}
+          onClick={updateTodoList}
         />
       </form>
     </div>
